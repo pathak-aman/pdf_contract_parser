@@ -4,3 +4,12 @@ pdf2image
 pytesseract
 
 python-dateutil
+
+dotenv
+langchain
+langchain-core
+langchain-openai
+langchain-google-genai
+google-generativeai
+langchain-huggingface
+pydantic
