@@ -64,10 +64,10 @@ pip install -r requirements.txt
 Run the script from the command line, providing a path to the input PDF and the desired output JSON file. 
 
 ```bash
-python aman_pathak.py <input.pdf> <output.json>
+python main.py <input.pdf> <output.json>
 ```
 
 Example: 
 ```bash
-python aman_pathak.py ./test_data/contract_1.pdf ./output/contract_1.json
+python main.py ./test_data/contract_1.pdf ./output/contract_1.json
 ``` 
