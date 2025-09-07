@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Import our refactored components
-from utils import extract_text_from_pdf
+from utils import extract_text_from_pdf, extract_text_from_pdf_pages
 from parsers import parse_with_llm, parse_with_rules
 
 def main():
@@ -34,15 +34,17 @@ def main():
         final_output = {"title": "Extraction Failed", "contract_type": "Unknown", "effective_date": None, "sections": []}
     else:
         # First, try the LLM-based parser
-        # final_output = parse_with_llm(full_text)
-        print("INFO: Skipping LLM to test rule")
-        final_output = None
+        final_output = parse_with_llm(full_text)
+        
+        # print("INFO: Skipping LLM to test rule based, remove after is testing")
+        # final_output = None
 
         
         # If the LLM parser fails or is unavailable, fall back to the rule-based one
         if final_output is None:
+            all_extracted_pages = extract_text_from_pdf_pages(args.input_pdf)
             print("INFO: LLM path failed or skipped. Using rule-based fallback parser.", file=sys.stderr)
-            final_output = parse_with_rules(full_text)
+            final_output = parse_with_rules(all_extracted_pages)
 
     # Write the final JSON output
     try:
