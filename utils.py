@@ -29,18 +29,6 @@ def normalize_text(text: str) -> str:
         return ""
     return re.sub(r'\s+', ' ', text).strip()
 
-import re
-import sys
-
-import re
-import sys
-
-import re
-import sys
-
-import re
-import sys
-
 def preprocess_ocr_numbers(text: str) -> str:
     """
     Normalize only numeric labels misread by OCR (e.g., 'i2.' -> '12.', 'iS.' -> '15.', 'i€.' -> '16.').
