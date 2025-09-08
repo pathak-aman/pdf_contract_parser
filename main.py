@@ -37,17 +37,19 @@ def main():
         full_text_for_llm = "\n\n -- PAGE BREAK --\n\n".join(pages_text)
 
         # Store for debugging
-        try:
-            file = "outputs/llm_debug_extracted" + args.input_pdf.replace("/", "_").replace("\\", "_") + ".txt"
-            with open(file, 'w', encoding='utf-8') as f:
-                f.write(full_text_for_llm)
-            print(f"INFO: Extracted text saved to {file}", file=sys.stderr)
-        except Exception as e:
-            print(f"WARN: Could not save LLM debug file: {e}", file=sys.stderr)
+        # try:
+        #     file = "outputs/llm_debug_extracted" + args.input_pdf.replace("/", "_").replace("\\", "_") + ".txt"
+        #     with open(file, 'w', encoding='utf-8') as f:
+        #         f.write(full_text_for_llm)
+        #     print(f"INFO: Extracted text saved to {file}", file=sys.stderr)
+        # except Exception as e:
+        #     print(f"WARN: Could not save LLM debug file: {e}", file=sys.stderr)
+
+
         # First, try the LLM-based parser
-        # final_output = parse_with_llm(full_text_for_llm)
-        print("INFO: Skipping LLM to test rule based, remove after is testing")
-        final_output = None
+        final_output = parse_with_llm(full_text_for_llm)
+        # print("INFO: Skipping LLM to test rule based, remove after is testing")
+        # final_output = None
 
         
         # If the LLM parser fails or is unavailable, fall back to the rule-based one
