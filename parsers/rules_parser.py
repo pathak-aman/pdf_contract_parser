@@ -495,11 +495,11 @@ def assemble_output_json(title: str, contract_type: str, effective_date: Optiona
 # ----------------------------
 
 
-def parse_pdf_to_contract(pdf_path: str) -> dict:
+def parse_pdf_to_contract(pages_text: list[str]) -> dict:
     """
     Orchestrates the entire parsing pipeline and returns the JSON-serializable dict.
     """
-    pages_text = load_pdf_text_by_page(pdf_path)
+    # pages_text = load_pdf_text_by_page(pdf_path)
     lines_by_page = split_into_lines_by_page(pages_text)
     title, contract_type = guess_title_and_type(lines_by_page)
     sections = segment_sections(lines_by_page, known_title=title)
